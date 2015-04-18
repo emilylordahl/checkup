@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 module.exports = {
   up: function(migration, DataTypes, done) {
-    migration.createTable("users", {
+    migration.createTable('users', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -15,13 +15,14 @@ module.exports = {
         type: DataTypes.STRING
       },
       username: {
+        unique: true,
         type: DataTypes.STRING
       },
-      password: {
+      password_digest: {
         type: DataTypes.STRING
       },
-      birthday: {
-        type: DataTypes.DATE
+      age: {
+        type: DataTypes.INTEGER
       },
       gender: {
         type: DataTypes.STRING
@@ -29,17 +30,17 @@ module.exports = {
       pregnant: {
         type: DataTypes.BOOLEAN
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: DataTypes.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: DataTypes.DATE
       }
     }).done(done);
   },
   down: function(migration, DataTypes, done) {
-    migration.dropTable("users").done(done);
+    migration.dropTable('users').done(done);
   }
 };

@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 module.exports = {
   up: function(migration, DataTypes, done) {
-    migration.createTable("checkups", {
+    migration.createTable('checkups', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      detail: {
+      content: {
         type: DataTypes.STRING
       },
       complete: {
@@ -17,17 +17,17 @@ module.exports = {
       user_id: {
         type: DataTypes.INTEGER
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: DataTypes.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: DataTypes.DATE
       }
     }).done(done);
   },
   down: function(migration, DataTypes, done) {
-    migration.dropTable("checkups").done(done);
+    migration.dropTable('checkups').done(done);
   }
 };
