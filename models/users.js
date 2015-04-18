@@ -68,7 +68,11 @@ module.exports = function(sequelize, DataTypes) {
     underscored: true,
     classMethods: {
       associate: function(models) {
-        users.hasMany(models.checkups, { foreignKey: 'user_id' });
+        users.hasMany(models.checkups, { 
+          foreignKey: 'user_id',
+          onDelete: 'cascade',
+          hooks: true
+        });
       }
     }
   });
