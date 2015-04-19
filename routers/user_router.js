@@ -38,7 +38,12 @@ router.get('/:id', function (req, res) {
 		})
 		.then(function(user) {
 			res.send(user);
+			// console.log(user.age);
+			// console.log(user.gender);
+			// console.log(user.pregnant);
 		});
+
+
 });
 
 // Create

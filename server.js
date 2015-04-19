@@ -5,6 +5,7 @@ var express		 			  = require('express'),
 		checkupRouter 	  = require('./routers/checkup_router.js'),
 		sessionRouter 	  = require('./routers/session_router.js'),
 		currentUserRouter = require('./routers/current_user_router.js'),
+		searchRouter			= require('./routers/search_router.js'),
 		app               = express();
 
 app.use(bodyParser.json());
@@ -23,6 +24,9 @@ app.use('/sessions', sessionRouter);
 
 // Current User
 app.use('/current_user', currentUserRouter);
+
+// Search API
+app.use('/search', searchRouter);
 
 app.listen(3000, function() {
 	console.log('Server listening on 3000...');
