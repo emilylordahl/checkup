@@ -7,15 +7,19 @@ router.use(logger('dev'));
 
 router.get('/', function (req, res) {
 
-	var age      = 25;
-	var gender   = 'female';
-	var pregnant = false;
-	var baseUrl  = 'http://healthfinder.gov/developer/MyHFSearch.json?api_key=';
-	var apiKey   = 'xdwpkcqluwfuahrx';
+	// Need to first make a request to the server to /current_user and get the id
+	// Then ping the server again for /users/:id to get the age, gender and pregnancy status
+	// Then use all that information to create the query string
 
 	request({
-		uri: baseUrl + apiKey +	'&age=' + age + '&gender=' + gender + '&pregnant=' + pregnant,
+		uri: 'http://healthfinder.gov/developer/MyHFSearch.json?api_key=',
 		method: 'GET',
+		qs: {
+			api_key: 'xdwpkcqluwfuahrx',
+			age: 25,
+			gender: 'female',
+			pregnant: false
+		},
 		json: true
 	}, function (error, response, body) {
 		var results = body.Result.Topics;
@@ -38,21 +42,3 @@ module.exports = router;
 	// }, function (error, response, body) {
 
 // });
-
-// Can I do this instead of the above for the nested request at line 14?
-// function (error, response, body) {
-// 			var baseUrl  = 'http://healthfinder.gov/developer/MyHFSearch.json?api_key=';
-// 			var apiKey   = 'xdwpkcqluwfuahrx';
-
-// 			request({
-// 				uri: baseUrl + apiKey +	age + gender + pregnant,
-// 				method: 'GET',
-// 				qs: {
-// 					age: body.age,
-// 					gender: body.gender,
-// 					pregnant: body.pregnant
-// 				}
-// 			}, function (error, response, body) {
-
-// 			});
-	// });
