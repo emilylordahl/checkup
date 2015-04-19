@@ -29,8 +29,8 @@ module.exports = function(sequelize, DataTypes) {
      type: DataTypes.STRING,
      allowNull: false,
      validate: {
-      len: { args: [8,20], msg: 'Passwords must be 8 to 20 characters.'},
-      isAlphanumeric: { msg: 'Passwords must contain at least one letter and number.' },
+      len: { args: [8,100], msg: 'Passwords must be 8 to 20 characters.'},
+      // isAlphanumeric: { msg: 'Passwords must contain at least one letter and number.' },
       notEmpty: {  msg: 'Please create a password.' }
      } 
     },
@@ -55,6 +55,7 @@ module.exports = function(sequelize, DataTypes) {
     pregnant: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: false,
       validate: {
         isFemale: function() {
           if ( (this.gender === 'female') && (this.age >= 11) ) {

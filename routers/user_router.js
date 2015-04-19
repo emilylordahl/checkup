@@ -26,13 +26,11 @@ var restrictAccess = function(req, res, next) {
 };
 
 var authenticate = function(req, res, next) {
-	req.session.currenUser ? next() : res.status(400).send({ err: 400, msg: 'Login denied.' });
+	req.session.currentUser ? next() : res.status(400).send({ err: 400, msg: 'Login denied.' });
 };
 
-// ----- USER ----- //
-
 // Show
-router.get('/:id', authenticate, restrictAccess, function (req, res) {
+router.get('/:id', function (req, res) {
 	User
 		.findOne({
 			where: { id: req.params.id },
@@ -45,17 +43,24 @@ router.get('/:id', authenticate, restrictAccess, function (req, res) {
 
 // Create
 router.post('/', function (req, res) {
+	var firstName = req.body.first_name;
+	var lastName  = req.body.last_name;
+	var username  = req.body.username;
+	var password  = req.body.password;
+	var age       = req.body.age;
+	var gender    = req.body.gender;
+	var pregnant  = req.body.pregnant;
 
 	bcrypt.hash(password, 10, function(err, hash) {
 		User
 			.create({
-				first_name: req.body.first_name,
-				last_name: req.body.last_name,
-				username: req.body.username,
+				first_name: firstName,
+				last_name: lastName,
+				username: username,
 				password_digest: hash,
-				age: req.body.age,
-				gender: req.body.gender,
-				pregnant: req.body.pregnant
+				age: age,
+				gender: gender,
+				pregnant: pregnant
 			})
 			.then(function(user) {
 				res.send(user);
@@ -65,10 +70,26 @@ router.post('/', function (req, res) {
 
 // Update
 router.put('/:id', function (req, res) {
+	User
+		.findOne(req.params.id)
+		.then(function (user) {
+			user
+				.update(req.body)
+				.then(function(updatedUser) {
+					res.send(updatedUser);
+				});
+		});
 });
 
 // Destroy
 router.delete('/:id', function (req, res) {
+	User
+		.findOne(req.params.id)
+		.then(function (user) {
+			user
+				.destroy()
+					res.send(user);
+		});
 });
 
 module.exports = router;
