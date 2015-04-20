@@ -74,6 +74,15 @@ module.exports = function(sequelize, DataTypes) {
           onDelete: 'cascade',
           hooks: true
         });
+      },
+      getUserInfo: function() {
+        return users.findOne({
+          where: {
+            age: this.age,
+            gender: this.gender,
+            pregnant: this.pregnant
+          }
+        });
       }
     }
   });

@@ -29,6 +29,63 @@ var authenticate = function(req, res, next) {
 	req.session.currentUser ? next() : res.status(400).send({ err: 400, msg: 'Login denied.' });
 };
 
+//----- SESSION -----//
+
+router.get('/current_user', function (req, res) {
+	console.log(req.session.currentUser);
+	if (req.session.currentUser) {
+		User
+			.findOne(req.session.currentUser)
+			.then(function(user) {
+				res.send(user);
+			});
+	} else {
+		res.send(null);
+	}
+});
+
+router.post('/sessions', function (req, res) {
+	var loginUsername = req.body.username;
+	var loginPassword = req.body.password;
+
+	User
+		.findOne({
+			where: { username: loginUsername }
+		})
+		.then(function(user) {
+			if (user) {
+				var passwordDigest = user.password_digest;
+
+				bcrypt.compare(loginPassword, passwordDigest, function(err, result) {
+					if (result) {
+						req.session.currentUser = user.id;
+						res.send('Correct login information.');
+						console.log(req.session.currentUser);
+					} else {
+						res.status(400);
+						res.send({
+							err: 400,
+							msg: 'Wrong password. Please try again.'
+						});
+					}
+				});
+			} else {
+				res.status(400);
+				res.send({
+					err: 400,
+					msg: 'Username does not exist.'
+				});
+			}
+		});
+});
+
+router.delete('/sessions', function (req, res) {
+	delete req.session.currentUser;
+	res.send('Successfully logged out.');	
+});
+
+//----- USER -----//
+
 // Show
 router.get('/:id', function (req, res) {
 	User
@@ -38,12 +95,10 @@ router.get('/:id', function (req, res) {
 		})
 		.then(function(user) {
 			res.send(user);
-			// console.log(user.age);
-			// console.log(user.gender);
-			// console.log(user.pregnant);
+			console.log(user.age);
+			console.log(user.gender);
+			console.log(user.pregnant);
 		});
-
-
 });
 
 // Create
@@ -94,6 +149,14 @@ router.delete('/:id', function (req, res) {
 			user
 				.destroy()
 					res.send(user);
+		});
+});
+
+router.get('/:id/search', function (req, res) {
+	User
+		.findOne(req.params.id)
+		.then(function(user) {
+			res.send( user.getUserInfo() );
 		});
 });
 
