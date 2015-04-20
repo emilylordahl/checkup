@@ -7,6 +7,9 @@ var express		= require('express'),
 	  User      = models.users,
 		Checkup   = models.checkups;
 
+
+		// $.ajaxSetup withCredentials:
+
 router.use(session({
 	secret: 'secretsarenofun',
 	resave: false,
@@ -23,12 +26,12 @@ router.get('/', function (req, res) {
 	// Then use all that information to create the query string below
 
 
-User
-	.getUserId()
-	.then(function(user) {
-		// res.send(user);
-		console.log(user);
-		});
+// User
+// 	.getUserInfo()
+// 	.then(function(user) {
+// 		// res.send(user);
+// 		console.log(user);
+// 		});
 
 	// request({
 	// 	uri: 'http://localhost:3000/users/current_user',
@@ -47,6 +50,7 @@ User
 	// 	}
 	// });
 
+	
 	console.log(req.session.currentUser);
 
 // 	request({

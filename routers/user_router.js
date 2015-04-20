@@ -152,4 +152,12 @@ router.delete('/:id', function (req, res) {
 		});
 });
 
+router.get('/:id/search', function (req, res) {
+	User
+		.findOne(req.params.id)
+		.then(function(user) {
+			res.send( user.getUserInfo() );
+		});
+});
+
 module.exports = router;

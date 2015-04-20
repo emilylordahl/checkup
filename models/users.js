@@ -75,8 +75,14 @@ module.exports = function(sequelize, DataTypes) {
           hooks: true
         });
       },
-      getUserId: function(models) {
-        return users.findOne(req.session.currentUser);
+      getUserInfo: function() {
+        return users.findOne({
+          where: {
+            age: this.age,
+            gender: this.gender,
+            pregnant: this.pregnant
+          }
+        });
       }
     }
   });

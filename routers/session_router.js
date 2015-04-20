@@ -27,7 +27,7 @@ router.post('/', function (req, res) {
 				bcrypt.compare(loginPassword, passwordDigest, function(err, result) {
 					if (result) {
 						req.session.currentUser = user.id;
-						res.send('Correct login information.');
+						res.send('Correct login information.');						
 						console.log(req.session.currentUser);
 					} else {
 						res.status(400);
@@ -53,3 +53,5 @@ router.delete('/', function (req, res) {
 });
 
 module.exports = router;
+
+
