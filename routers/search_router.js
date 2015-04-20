@@ -7,31 +7,32 @@ router.use(logger('dev'));
 
 router.get('/', function (req, res) {
 
-	// Need to first make a request to the server to /current_user and get the id
+	// After a user has signed in, need to first make a request to the server to /current_user and get that user's id
 	// Then ping the server again for /users/:id to get the age, gender and pregnancy status
-	// Then use all that information to create the query string
+	// Then use all that information to create the query string below
 
 	request({
 		uri: 'http://healthfinder.gov/developer/MyHFSearch.json?api_key=',
 		method: 'GET',
 		qs: {
 			api_key: 'xdwpkcqluwfuahrx',
-			age: 25,
-			gender: 'female',
-			pregnant: false
+			age: 25, // This will need to be user.age
+			gender: 'female', // This will need to be user.gender
+			pregnant: false // This will be need to user.pregnant or default of false
 		},
 		json: true
 	}, function (error, response, body) {
 		var results = body.Result.Topics;
-		results.forEach(function(title) {
-			var resultData = title.Title;
-		console.log(resultData);	
-		return resultData;
-		res.send(resultData);
+		results.forEach(function(content) {
+			var resultData = {
+				tip: content.Title,
+				description: content.MyHFDescription
+			}
+			console.log(resultData);
+			res.send(resultData);
 		});
 	});
 });
-
 
 module.exports = router;
 
