@@ -18,7 +18,7 @@ router.use(logger('dev'));
 router.get('/', function (req, res) {
 
 	request({
-		uri: '/users/current_user',
+		uri: '/current_user',
 		method: 'GET',
 		json: true
 	}, function (error, response, body) {

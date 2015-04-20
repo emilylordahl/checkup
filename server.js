@@ -3,8 +3,8 @@ var express		 			  = require('express'),
 		morgan 		 			  = require('morgan'),
 		userRouter    	  = require('./routers/user_router.js'),
 		checkupRouter 	  = require('./routers/checkup_router.js'),
-		// sessionRouter 	  = require('./routers/session_router.js'),
-		// currentUserRouter = require('./routers/current_user_router.js'),
+		sessionRouter 	  = require('./routers/session_router.js'),
+		currentUserRouter = require('./routers/current_user_router.js'),
 		searchRouter			= require('./routers/search_router.js'),
 		session 					= require('express-session'),
 		app               = express();
@@ -20,47 +20,6 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-app.post('/sessions', function (req, res) {
-	var loginUsername = req.body.username;
-	var loginPassword = req.body.password;
-
-	User
-		.findOne({
-			where: { username: loginUsername }
-		})
-		.then(function(user) {
-			if (user) {
-				var passwordDigest = user.password_digest;
-
-				bcrypt.compare(loginPassword, passwordDigest, function(err, result) {
-					if (result) {
-						req.session.currentUser = user.id;
-						// globalUserID = req.session.currentUser;
-						res.send('Correct login information.');						
-						console.log(req.session.currentUser);
-					} else {
-						res.status(400);
-						res.send({
-							err: 400,
-							msg: 'Wrong password. Please try again.'
-						});
-					}
-				});
-			} else {
-				res.status(400);
-				res.send({
-					err: 400,
-					msg: 'Username does not exist.'
-				});
-			}
-		});
-});
-
-app.delete('/sessions', function (req, res) {
-	delete req.session.currentUser;
-	res.send('Successfully logged out.');	
-});
-
 // Users
 app.use('/users', userRouter);
 
@@ -68,10 +27,10 @@ app.use('/users', userRouter);
 app.use('/checkups', checkupRouter);
 
 // Sessions
-// app.use('/sessions', sessionRouter);
+app.use('/sessions', sessionRouter);
 
 // Current User
-// app.use('/current_user', currentUserRouter);
+app.use('/current_user', currentUserRouter);
 
 // Search API
 app.use('/search', searchRouter);
