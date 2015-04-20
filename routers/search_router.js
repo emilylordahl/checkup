@@ -8,6 +8,7 @@ router.use(logger('dev'));
 router.get('/', function (req, res) {
 
 	// After a user has signed in, need to first make a request to the server to /current_user and get that user's id
+	// session.currentUser to get the ID then send a request to DB
 	// Then ping the server again for /users/:id to get the age, gender and pregnancy status
 	// Then use all that information to create the query string below
 
@@ -23,16 +24,16 @@ router.get('/', function (req, res) {
 		json: true
 	}, function (error, response, body) {
 		console.log(body.Result.Topics);
-		// return body.Result.Topics;
 		var results = body.Result.Topics;
+		var resultsArray =[];
 		results.forEach(function(content) {
 			var resultData = {
 				tip: content.Title,
 				description: content.MyHFDescription
 			}
-			console.log(resultData);
-			res.send(resultData);
+			resultsArray.push(resultData);
 		});
+		res.send(resultsArray);
 	});
 });
 
