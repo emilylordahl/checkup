@@ -7,7 +7,7 @@ router.use(logger('dev'));
 
 router.get('/', function (req, res) {
 
-	// After a user has signed it, need to first make a request to the server to /current_user and get that user's id
+	// After a user has signed in, need to first make a request to the server to /current_user and get that user's id
 	// Then ping the server again for /users/:id to get the age, gender and pregnancy status
 	// Then use all that information to create the query string below
 
@@ -16,21 +16,20 @@ router.get('/', function (req, res) {
 		method: 'GET',
 		qs: {
 			api_key: 'xdwpkcqluwfuahrx',
-			age: 25, // This will be user.age
-			gender: 'female', // This will be user.gender
-			pregnant: false // This will be user.pregnant or default of false
+			age: 25, // This will need to be user.age
+			gender: 'female', // This will need to be user.gender
+			pregnant: false // This will be need to user.pregnant or default of false
 		},
 		json: true
 	}, function (error, response, body) {
 		var results = body.Result.Topics;
-		// console.log(results);
-		results.forEach(function(title) {
+		results.forEach(function(content) {
 			var resultData = {
-				tip: title.Title,
-				description: title.MyHFDescription
-			};
-		console.log(resultData);
-		res.send(resultData);
+				tip: content.Title,
+				description: content.MyHFDescription
+			}
+			console.log(resultData);
+			res.send(resultData);
 		});
 	});
 });
