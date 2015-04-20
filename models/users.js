@@ -74,6 +74,9 @@ module.exports = function(sequelize, DataTypes) {
           onDelete: 'cascade',
           hooks: true
         });
+      },
+      getUserId: function(models) {
+        return users.findOne(req.session.currentUser);
       }
     }
   });

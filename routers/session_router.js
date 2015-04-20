@@ -28,6 +28,7 @@ router.post('/', function (req, res) {
 					if (result) {
 						req.session.currentUser = user.id;
 						res.send('Correct login information.');
+						console.log(req.session.currentUser);
 					} else {
 						res.status(400);
 						res.send({

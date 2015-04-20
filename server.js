@@ -3,8 +3,8 @@ var express		 			  = require('express'),
 		morgan 		 			  = require('morgan'),
 		userRouter    	  = require('./routers/user_router.js'),
 		checkupRouter 	  = require('./routers/checkup_router.js'),
-		sessionRouter 	  = require('./routers/session_router.js'),
-		currentUserRouter = require('./routers/current_user_router.js'),
+		// sessionRouter 	  = require('./routers/session_router.js'),
+		// currentUserRouter = require('./routers/current_user_router.js'),
 		searchRouter			= require('./routers/search_router.js'),
 		app               = express();
 
@@ -20,10 +20,10 @@ app.use('/users', userRouter);
 app.use('/checkups', checkupRouter);
 
 // Sessions
-app.use('/sessions', sessionRouter);
+// app.use('/sessions', sessionRouter);
 
 // Current User
-app.use('/current_user', currentUserRouter);
+// app.use('/current_user', currentUserRouter);
 
 // Search API
 app.use('/search', searchRouter);

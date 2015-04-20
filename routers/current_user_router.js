@@ -12,12 +12,16 @@ router.use(session({
 }));
 
 router.get('/', function (req, res) {
-	var userID = req.session.currentUser;
-	User
-		.findOne(userID)
-		.then(function(user) {
-			res.send(user);
-		});
+	console.log(req.session.currentUser);
+	if (req.session.currentUser) {
+		User
+			.findOne(req.session.currentUser)
+			.then(function(user) {
+				res.send(user);
+			});
+	} else {
+		res.send(null);
+	}
 });
 
 module.exports = router;
