@@ -22,6 +22,8 @@ router.get('/', function (req, res) {
 		},
 		json: true
 	}, function (error, response, body) {
+		console.log(body.Result.Topics);
+		// return body.Result.Topics;
 		var results = body.Result.Topics;
 		results.forEach(function(content) {
 			var resultData = {
