@@ -23,14 +23,15 @@ h3 {
 
 p {
 	margin: 0;
+	text-align: right;
 }
 
 #signup, #login {
-  width: 35%;
+  width: 25%;
   margin: auto;
   margin-bottom: 50px;
   padding: 25px;
-  border: 1px solid snow;
+  border: 1px solid powderblue;
   opacity: 1;
   background-color: lightcoral;
   /*background-color: rgba(250, 250, 250, 0.1)*/;
