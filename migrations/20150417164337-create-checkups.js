@@ -8,8 +8,11 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      content: {
+      tip: {
         type: DataTypes.STRING
+      },
+      description: {
+        type: DataTypes.TEXT
       },
       complete: {
         type: DataTypes.BOOLEAN

@@ -27,28 +27,28 @@ router.get('/', function (req, res) {
 			User
 				.findOne(req.session.currentUser)
 				.then(function(user) {
-						request({
-		uri: 'http://healthfinder.gov/developer/MyHFSearch.json?api_key=',
-		method: 'GET',
-		qs: {
-			api_key: 'xdwpkcqluwfuahrx',
-			age: user.age, 
-			gender: user.gender, 
-			pregnant: user.pregnant
-		},
-		json: true
-	}, function (error, response, body) {
-		var results = body.Result.Topics;
-		var resultsArray =[];
-		results.forEach(function(content) {
-			var resultData = {
-				tip: content.Title,
-				description: content.MyHFDescription
-			}
-			resultsArray.push(resultData);
-		});
-		res.send(resultsArray);
-	});					
+					request({
+						uri: 'http://healthfinder.gov/developer/MyHFSearch.json?api_key=',
+						method: 'GET',
+						qs: {
+							api_key: 'xdwpkcqluwfuahrx',
+							age: user.age, 
+							gender: user.gender, 
+							pregnant: user.pregnant
+						},
+						json: true
+					}, function (error, response, body) {
+						var results = body.Result.Topics;
+						var resultsArray =[];
+						results.forEach(function(content) {
+							var resultData = {
+								tip: content.Title,
+								description: content.MyHFDescription
+							}
+							resultsArray.push(resultData);
+						});
+						res.send(resultsArray);
+					});					
 				});
 		} else {
 			res.send(null);
