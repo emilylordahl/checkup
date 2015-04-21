@@ -1,7 +1,8 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var checkups = sequelize.define('checkups', {
-    content: DataTypes.STRING,
+    tip: DataTypes.STRING,
+    description: DataTypes.TEXT,
     complete: DataTypes.BOOLEAN,
     user_id: DataTypes.INTEGER
   }, {

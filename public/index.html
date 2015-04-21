@@ -10,14 +10,45 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
   
   <link rel="stylesheet" href="css/style.css">
-
+	
   <script src="js/app.js"></script>
-
+	<script src="js/views/signup.js"></script>
+	<script src="js/views/login.js"></script>
 
 </head>
 <body>
 
 	<h1>CheckUp</h1>
 	
+	<section id='errors'></section>
+
+	<section id='signup'>Sign Up
+		<p>First Name<input type='text' name='first_name'></p>
+		<p>Last Name<input type='text' name='last_name'></p>
+		<p>Username<input type='text' name='username'></p>
+		<p>Password<input type='password' name='password'></p>
+		<p>Age<input type='text' name='age'></p>
+		<p>Gender<select name='gender'>
+			<option value='female'>Female</option>
+			<option value='male'>Male</option>
+		</select></p>
+		<p>Are you pregnant?<select name='pregnant'>
+			<option value='true'>Yes</option>
+			<option value='false'>No</option>
+			<option value='false'>N/A</option>
+		</select></p>
+		<p><button id='signup-button'>Sign Up</button></p>
+	</section>
+
+	</br>
+	<hr>
+
+	<section id='login'>Login
+		<p>Username<input type='text' name='login-username'></p>
+		<p>Password<input type='password' name='login-password'></p>
+		<p><button id='login-button'>Login</button></p>
+		<p><button id='logout-button'>Logout</button></p>
+	</section>
+
 </body>
 </html>

@@ -20,6 +20,9 @@ app.use(session({
 	saveUninitialized: true
 }));
 
+// Current User
+app.use('/current_user', currentUserRouter);
+
 // Users
 app.use('/users', userRouter);
 
@@ -28,9 +31,6 @@ app.use('/checkups', checkupRouter);
 
 // Sessions
 app.use('/sessions', sessionRouter);
-
-// Current User
-app.use('/current_user', currentUserRouter);
 
 // Search API
 app.use('/search', searchRouter);
