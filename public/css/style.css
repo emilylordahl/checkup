@@ -7,4 +7,64 @@ body {
 	letter-spacing: 1px;
 	text-align: center;
 	margin: auto 0;
+	line-height: 15px;
+}
+
+h1 {
+	margin: 50px;
+}
+
+h3 {
+	font-weight: 200;
+  letter-spacing: 1.5px;
+  color: powderblue;
+  margin-bottom: 50px;
+}
+
+section h3 {
+	margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+p {
+	margin: 0;
+	text-align: right;
+}
+
+#signup, #login, #logged-in {
+  width: 25%;
+  margin: auto;
+  margin-bottom: 50px;
+  padding: 25px;
+  border: 1px solid powderblue;
+  opacity: 1;
+  background-color: lightcoral;
+  /*background-color: rgba(250, 250, 250, 0.1)*/;
+}
+
+input {
+	margin: 10px;
+	padding: 5px;
+	width: 50%;
+	display: inline-block;
+	font-family: 'Gotham Rounded', 'Merriweather', serif;
+	color: crimson;
+	font-size: 12.5px;
+}
+
+select {
+	margin: 15px;
+  border: none;
+  background-color: snow;
+  font-family: 'Gotham Rounded', 'Merriweather', serif;
+  height: 25px;
+}
+
+button {
+	padding: 10px;
+  background-color: powderblue;
+  border: none;
+  font-family: 'Gotham Rounded', 'Merriweather', serif;
+  font-size: 15px;
+  color: crimson;
 }
