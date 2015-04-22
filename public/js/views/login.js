@@ -25,7 +25,7 @@ App.Views.Login = Backbone.View.extend({
 				App.tipCollection.fetch({
 					success: function() {
 						App.tipCollectionView.setCollection(App.tipCollection);
-						App.tipCollectionView.render(this.saveModel, this);
+						App.tipCollectionView.render();
 					}
 				});
 			} else {
@@ -67,18 +67,5 @@ App.Views.Login = Backbone.View.extend({
 
 		// Need to write function to show and hide this properly so that the refresh doesn't show this.
 		$('#signup').show();
-	},
-
-	saveModel: function() {
-		console.log('Saving Model...');
-		var tips = App.tipCollection.models;
-		tips.forEach(function(tip) {
-			var tipModel = {
-				tip: tip.tip,
-				description: tip.description
-			}
-			return tipModel;
-		});
-		tipModel.save(); 
 	}
 });
