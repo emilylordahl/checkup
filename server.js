@@ -1,6 +1,6 @@
 var express		 			  = require('express'),
 		bodyParser 			  = require('body-parser'),
-		morgan 		 			  = require('morgan'),
+		logger 		 			  = require('morgan'),
 		userRouter    	  = require('./routers/user_router.js'),
 		checkupRouter 	  = require('./routers/checkup_router.js'),
 		sessionRouter 	  = require('./routers/session_router.js'),
@@ -9,9 +9,12 @@ var express		 			  = require('express'),
 		session 					= require('express-session'),
 		app               = express();
 
+
+if (process.env.NODE_ENV !== 'test') {
+  app.use( logger('dev') );
+}
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(morgan('dev'));
 app.use(express.static('./public'));
 
 app.use(session({

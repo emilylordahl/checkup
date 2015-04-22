@@ -17,9 +17,22 @@ describe('User', function() {
 				.then(function(err) {
 					var error_fields = err.errors.map(function(error) { return error.path; });
 					expect(error_fields).to.include('first_name');
-					done()
+					done();
 				});
 		});
+
+		it('should validate the presence of a last name', function(done) {
+			nullUser
+				.validate()
+				.then(function(err) {
+					var error_fields = err.errors.map(function(error) { return error.path; });
+					expect(error_fields).to.include('last_name');
+					done();
+				});
+		});
+
+		
+
 	});
 
 
