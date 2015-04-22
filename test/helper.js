@@ -1,12 +1,12 @@
-process.env.NODE_ENV = 'test';
+// process.env.NODE_ENV = 'test';
 
-var app = require('../server.js');
-var server;
+// var app = require('../server.js');
+// var server;
 
-before(function(done) {
-	server = app.listen(3000);
-});
+// before(function() {
+// 	server = app.listen(3000);
+// });
 
-after(function(done) {
-	server.close(done);
-});
+// after(function(done) {
+// 	server.close(done);
+// });
