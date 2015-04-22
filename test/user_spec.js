@@ -71,14 +71,14 @@ describe('User', function() {
 				});
 		});
 
-		it('should validate the presence of a pregnancy status', function(done) {
-			nullUser
-				.validate()
-				.then(function(err) {
-					var error_fields = err.errors.map(function(error) { return error.path; });
-					expect(error_fields).to.include('pregnant');
-					done();
-				});
-		});
+		// it('should validate the presence of a pregnancy status', function(done) {
+		// 	nullUser
+		// 		.validate()
+		// 		.then(function(err) {
+		// 			var error_fields = err.errors.map(function(error) { return error.path; });
+		// 			expect(error_fields).to.include('pregnant');
+		// 			done();
+		// 		});
+		// });
 	});
 });
