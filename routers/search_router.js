@@ -43,7 +43,7 @@ router.get('/', function (req, res) {
 						results.forEach(function(content) {
 							var resultData = {
 								tip: content.Title,
-								description: content.MyHFDescription
+								description: content.MyHFDescription // Change the format of this property. Split on the spaces, push to an array, pop off the last index and then join it back together on spaces. This eliminates the pesky parentheses.
 							}
 							resultsArray.push(resultData);
 						});
