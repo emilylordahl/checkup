@@ -41,8 +41,7 @@ App.Views.Signup = Backbone.View.extend({
 			pregnant: pregnant
 		}).done(/*this.login*/);
 
-	},
-
+	}
 	// login: function() {
 
 	// 	$.post('/sessions', {
