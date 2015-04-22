@@ -1,21 +1,12 @@
 'use strict';
 module.exports = {
   up: function(migration, DataTypes, done) {
-    migration.createTable('checkups', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
+    migration.createTable('checkups_users', {
+      checkup_id: {
         type: DataTypes.INTEGER
       },
-      tip: {
-        type: DataTypes.STRING
-      },
-      description: {
-        type: DataTypes.TEXT
-      },
-      complete: {
-        type: DataTypes.BOOLEAN
+      user_id: {
+        type: DataTypes.INTEGER
       },
       created_at: {
         allowNull: false,
@@ -28,6 +19,6 @@ module.exports = {
     }).done(done);
   },
   down: function(migration, DataTypes, done) {
-    migration.dropTable('checkups').done(done);
+    migration.dropTable('checkups_users').done(done);
   }
 };
