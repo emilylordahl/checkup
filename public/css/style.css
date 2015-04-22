@@ -10,6 +10,10 @@ body {
 	line-height: 15px;
 }
 
+:focus {
+  outline: none;
+}
+
 h1 {
 	margin: 50px;
 }
@@ -31,7 +35,7 @@ p {
 	text-align: right;
 }
 
-#signup, #login, #logged-in {
+#signup, #login {
   width: 25%;
   margin: auto;
   margin-bottom: 50px;
@@ -40,6 +44,11 @@ p {
   opacity: 1;
   background-color: lightcoral;
   /*background-color: rgba(250, 250, 250, 0.1)*/;
+}
+
+#logged-in {
+	width: 75%;
+	margin: auto;
 }
 
 input {
@@ -67,4 +76,11 @@ button {
   font-family: 'Gotham Rounded', 'Merriweather', serif;
   font-size: 15px;
   color: crimson;
+  border-bottom: 3px solid slategray;
+  transition: all .5s ease;
 }
+
+button:hover {
+	background-color: snow;
+	cursor: pointer;
+};

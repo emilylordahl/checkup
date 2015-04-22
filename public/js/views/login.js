@@ -1,3 +1,5 @@
+console.log('Loaded: views/login.js');
+
 App.Views.Login = Backbone.View.extend({
 
 	el: 'body',
@@ -11,13 +13,21 @@ App.Views.Login = Backbone.View.extend({
 
 	events: {
 		'click #login-button' : 'login',
-		'click #logout-button': 'logout'
+		'click #logout-button': 'logout',
+		'keypress #login input' : 'loginByEnter'
 	},
 
 	renderSession: function() {
+		console.log('I\'m here');
 		$.get('/current_user').done(function(user) {
 			if (user) {
 				$('#session').html(loggedInTemplate(user));
+				App.tipCollection.fetch({
+					success: function() {
+						App.tipCollectionView.setCollection(App.tipCollection);
+						App.tipCollectionView.render();
+					}
+				});
 			} else {
 				$('#session').html(loginTemplate());
 			}
@@ -26,6 +36,12 @@ App.Views.Login = Backbone.View.extend({
 				$('#session').html('404 Not Found :(');
 			}
 		});
+	},
+
+	loginByEnter: function(e) {
+		if (e.which === 13) {
+			this.login();
+		}
 	},
 
 	login: function() {
@@ -39,6 +55,8 @@ App.Views.Login = Backbone.View.extend({
 		}).done(this.renderSession);
 
 		$('#signup').hide();
+
+		// App.tipCollection.fetch();
 	},
 
 	logout: function() {

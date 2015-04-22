@@ -1,3 +1,5 @@
+console.log('Loaded: views/signup.js');
+
 App.Views.Signup = Backbone.View.extend({
 
 	el: '#signup',
@@ -7,7 +9,14 @@ App.Views.Signup = Backbone.View.extend({
 	},
 
 	events: {
-		'click #signup-button' : 'signup'
+		'click #signup-button' : 'signup',
+		'keypress .signup-input' : 'signupByEnter'
+	},
+
+	signupByEnter: function(e) {
+		if (e.which === 13) {
+			this.signup();
+		}
 	},
 
 	signup: function() {
@@ -20,6 +29,8 @@ App.Views.Signup = Backbone.View.extend({
 		var gender	  = $('[name="gender"]').val();
 		var pregnant  = $('[name="pregnant"]').val();
 
+		this.$('.signup-input').val('');
+
 		$.post('/users', {
 			first_name: firstName,
 			last_name: lastName,
@@ -29,5 +40,6 @@ App.Views.Signup = Backbone.View.extend({
 			gender: gender,
 			pregnant: pregnant
 		}).done();
+
 	}
 });
