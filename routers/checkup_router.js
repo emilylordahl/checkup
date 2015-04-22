@@ -25,8 +25,10 @@ router.post('/', function (req, res) {
 		});
 });
 
-
 // Delete Checkup
-		
+router.delete('/', function (req, res) {
+	Checkup
+		.findOne()
+})
 
 module.exports = router;
