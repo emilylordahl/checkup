@@ -19,7 +19,7 @@ router.get('/debug_session', function (req, res) {
 
 // User Auth Middleware
 var restrictAccess = function(req, res, next) {
-	var sessionID = parseInt( req.session.currenUser );
+	var sessionID = parseInt( req.session.currentUser );
 	var reqID = parseInt( req.params.id );
 
 	sessionID === reqID ? next() : res.status(401).send({ err: 401, msg: 'Access denied.' });
@@ -30,7 +30,7 @@ var authenticate = function(req, res, next) {
 };
 
 // Show
-router.get('/:id', function (req, res) {
+router.get('/:id', restrictAccess, authenticate, function (req, res) {
 	User
 		.findOne({
 			where: { id: req.params.id },
@@ -72,7 +72,7 @@ router.post('/', function (req, res) {
 });
 
 // Update
-router.put('/:id', function (req, res) {
+router.put('/:id', restrictAccess, authenticate, function (req, res) {
 	User
 		.findOne(req.params.id)
 		.then(function (user) {
@@ -85,7 +85,7 @@ router.put('/:id', function (req, res) {
 });
 
 // Destroy
-router.delete('/:id', function (req, res) {
+router.delete('/:id', restrictAccess, authenticate, function (req, res) {
 	User
 		.findOne(req.params.id)
 		.then(function (user) {

@@ -8,7 +8,7 @@ App.Views.Login = Backbone.View.extend({
 		console.log('Created: Login View');
 		loginTemplate = Handlebars.compile($('#login-template').html());
 		loggedInTemplate = Handlebars.compile($('#logged-in-template').html());
-		this.renderSession();
+		this.fetchAndRenderSession();
 	},
 
 	events: {
@@ -17,15 +17,15 @@ App.Views.Login = Backbone.View.extend({
 		'keypress #login input' : 'loginByEnter'
 	},
 
-	renderSession: function() {
-		console.log('I\'m here');
+	fetchAndRenderSession: function() {
+		console.log('Rendering session...');
 		$.get('/current_user').done(function(user) {
 			if (user) {
 				$('#session').html(loggedInTemplate(user));
 				App.tipCollection.fetch({
 					success: function() {
 						App.tipCollectionView.setCollection(App.tipCollection);
-						App.tipCollectionView.render();
+						App.tipCollectionView.render(this.saveModel, this);
 					}
 				});
 			} else {
@@ -33,7 +33,7 @@ App.Views.Login = Backbone.View.extend({
 			}
 		}).fail(function(jqXHR) {
 			if (jqXHR.status === 404) {
-				$('#session').html('404 Not Found :(');
+				$('#session').html('404 Not Found');
 			}
 		});
 	},
@@ -52,11 +52,10 @@ App.Views.Login = Backbone.View.extend({
 		$.post('/sessions', {
 			username: username,
 			password: password
-		}).done(this.renderSession);
+		}).done(this.fetchAndRenderSession);
 
+		// Need to write function to show and hide this properly so that the refresh doesn't show this.
 		$('#signup').hide();
-
-		// App.tipCollection.fetch();
 	},
 
 	logout: function() {
@@ -64,9 +63,22 @@ App.Views.Login = Backbone.View.extend({
 		$.ajax({
 			url: '/sessions',
 			method: 'DELETE'
-		}).done(this.renderSession);
+		}).done(this.fetchAndRenderSession);
 
+		// Need to write function to show and hide this properly so that the refresh doesn't show this.
 		$('#signup').show();
+	},
 
+	saveModel: function() {
+		console.log('Saving Model...');
+		var tips = App.tipCollection.models;
+		tips.forEach(function(tip) {
+			var tipModel = {
+				tip: tip.tip,
+				description: tip.description
+			}
+			return tipModel;
+		});
+		tipModel.save(); 
 	}
 });
