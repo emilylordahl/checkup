@@ -10,6 +10,10 @@ body {
 	line-height: 15px;
 }
 
+:focus {
+  outline: none;
+}
+
 h1 {
 	margin: 50px;
 }
@@ -72,4 +76,11 @@ button {
   font-family: 'Gotham Rounded', 'Merriweather', serif;
   font-size: 15px;
   color: crimson;
+  border-bottom: 3px solid slategray;
+  transition: all .5s ease;
 }
+
+button:hover {
+	background-color: snow;
+	cursor: pointer;
+};
