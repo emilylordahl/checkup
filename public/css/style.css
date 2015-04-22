@@ -14,6 +14,8 @@ body {
   outline: none;
 }
 
+/* Typography */
+
 h1 {
 	margin: 50px;
 }
@@ -28,11 +30,26 @@ h3 {
 section h3 {
 	margin-top: 5px;
   margin-bottom: 25px;
+  padding: 10px;
+  border-bottom: 1px solid powderblue;
+}
+
+section #tips h3 {
+	padding-left: 0px;
+	line-height: normal;
+	font-weight: 400;
 }
 
 p {
 	margin: 0;
 	text-align: right;
+}
+
+section #tips p {
+	text-align: left;
+	line-height: normal;
+	font-family: 'Merriweather', serif;
+	font-size: 12px;
 }
 
 #signup, #login {
@@ -44,6 +61,18 @@ p {
   opacity: 1;
   background-color: lightcoral;
   /*background-color: rgba(250, 250, 250, 0.1)*/;
+}
+
+#tips {
+	width: 25%;
+  height: auto;
+  margin: 10px;
+  text-align: left;
+  padding: 25px;
+  /* border: 1px solid powderblue; */
+  /* background-color: powderblue; */
+  background-color: rgba(250, 250, 250, 0.1);
+  float: left;
 }
 
 #logged-in {
@@ -59,6 +88,10 @@ input {
 	font-family: 'Gotham Rounded', 'Merriweather', serif;
 	color: crimson;
 	font-size: 12.5px;
+}
+
+#checkbox {
+  width: auto;
 }
 
 select {

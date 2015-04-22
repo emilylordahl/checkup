@@ -39,7 +39,19 @@ App.Views.Signup = Backbone.View.extend({
 			age: age,
 			gender: gender,
 			pregnant: pregnant
-		}).done();
+		}).done(/*this.login*/);
 
-	}
+	},
+
+	// login: function() {
+
+	// 	$.post('/sessions', {
+	// 		username: username,
+	// 		password: password
+	// 	}).done(this.fetchAndRenderSession);
+
+	// 	// Need to write function to show and hide this properly so that the refresh doesn't show this.
+	// 	$('#signup').hide();
+	// }
+
 });

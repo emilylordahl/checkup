@@ -14,13 +14,17 @@
   <script src="js/app.js"></script>
 
   <script src='js/models/tip.js'></script>
+  <script src='js/models/checkup.js'></script>
 
-	<script src='js/collections/tip.js'></script>
+	<script src='js/collections/tips.js'></script>
+	<script src='js/collections/checkups.js'></script>
 
 	<script src="js/views/signup.js"></script>
 	<script src="js/views/login.js"></script>
   <script src='js/views/tip.js'></script>
   <script src='js/views/tips.js'></script>
+  <script src='js/views/checkup.js'></script>
+  <script src='js/views/checkups.js'></script>
 
 </head>
 <body>
@@ -69,15 +73,33 @@
 			<h2>Welcome back, {{first_name}}!</h2>
 			<button id='logout-button'>Logout</button>
 			<h3>As a {{age}} year old {{gender}}, here are some tips to help you maintain your health this year.</h3>
-			<section id="tips-container"></div>
+			<section id='tips-container'></div>
 		</section>
+
+<!-- 		<section id='search'>
+			<p>Age:<input class='signup-input' type='text' name='age'></p>
+			<p>Gender:<select name='gender'>
+				<option value='female'>Female</option>
+				<option value='male'>Male</option>
+			</select></p>
+			<p>Are you pregnant?<select name='pregnant'>
+				<option value='false'>No</option>
+				<option value='true'>Yes</option>
+				<option value='false'>N/A</option>
+			</select></p>
+		</section> -->
+
+
 	</template>
 
 	<!-- <h3><script type="text/javascript">document.write(new Date().getFullYear());</script></h3> -->
 
 	<template id='tips-template'>
-			<h3><input type='checkbox' value='false' name='complete'>{{tip}}</h3>
+		<section id='tips'>
+			<h3>{{tip}}</h3>
 			<p>{{description}}</p>
+			<p><input id='checkbox' type='checkbox' value='false' name='complete'>Complete</p>
+		</section>	
 	</template>
 
 </body>
