@@ -14,4 +14,5 @@ App.Models.Tip = Backbone.Model.extend({
 		// }
 		this.get('complete') ? this.save('complete', false) : this.save('complete', true);
 	}
+	
 });

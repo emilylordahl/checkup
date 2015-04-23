@@ -6,13 +6,10 @@ App.Views.Tip = Backbone.View.extend({
 
 	// className: 'checkbox',
 
-	// el: '#tips-container',
-
 	initialize: function() {
 		console.log('Created: Single Tip View');
 		this.tipsTemplate = Handlebars.compile($('#tips-template').html());
 		this.render();
-		console.log(this.$el);
 	},
 
 	events: {
@@ -34,7 +31,8 @@ App.Views.Tip = Backbone.View.extend({
 	},
 
 	changeClass: function() {
-		console.log('Changing class');
+		console.log('Changing Class');
+
 		var completeStatus = this.model.get('complete');
 		if (completeStatus === true) {
 			this.$el.addClass('done')
