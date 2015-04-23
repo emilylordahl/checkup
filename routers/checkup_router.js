@@ -14,19 +14,21 @@ router.use(session({
 // Create Checkup
 router.post('/', function (req, res) {
 	Checkup
-		.create({
-			tip: req.body.tip,
-			description: req.body.description,
-			complete: false,
-			user_id: req.session.currentUser
+		.findOrCreate({
+			where: { 			
+				tip: req.body.tip,
+				description: req.body.description,
+				complete: false,
+				user_id: req.session.currentUser 
+			}
 		})
 		.then(function(checkup) {
 			res.send(checkup);
 		});
 });
 
-
 // Delete Checkup
-		
+router.delete('/', function (req, res) {
+});
 
 module.exports = router;

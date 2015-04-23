@@ -9,7 +9,6 @@ var express		 			  = require('express'),
 		session 					= require('express-session'),
 		app               = express();
 
-
 if (process.env.NODE_ENV !== 'test') {
   app.use( logger('dev') );
 }

@@ -87,7 +87,10 @@ router.put('/:id', restrictAccess, authenticate, function (req, res) {
 // Destroy
 router.delete('/:id', restrictAccess, authenticate, function (req, res) {
 	User
-		.findOne(req.params.id)
+		.findOne({
+			where: { id: req.params.id },
+			include: [Checkup]
+		})
 		.then(function (user) {
 			user
 				.destroy()
