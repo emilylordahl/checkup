@@ -68,8 +68,12 @@ router.post('/', function (req, res) {
 			.then(function(user) {
 				res.send(user);
 			}, function(err) {
+				var errors = err.errors.map(function(error) { return error.path + ' - ' + error.message } )
 				res.status(422);
-				res.send(err);
+				res.send({
+					status: 422,
+					err: errors
+				});
 			});
 	});
 });
