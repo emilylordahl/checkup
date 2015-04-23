@@ -9,8 +9,6 @@ var express		 			  = require('express'),
 		session 					= require('express-session'),
 		app               = express();
 
-app.set('port', process.env.PORT || 3000);		
-
 if (process.env.NODE_ENV !== 'test') {
   app.use( logger('dev') );
 }
@@ -39,8 +37,8 @@ app.use('/sessions', sessionRouter);
 // Search API
 app.use('/search', searchRouter);
 
-app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + app.get('port') );
+app.listen(process.env.PORT || 3000, function() {
+  console.log('Server running on 3000...');
 });
 
 module.exports = app;
