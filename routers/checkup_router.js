@@ -27,6 +27,12 @@ router.post('/', function (req, res) {
 		});
 });
 
+// Update Checkup
+// router.put('/', function (req, res) {
+// 	Checkup
+// 		.findOne()
+// });
+
 // Delete Checkup
 router.delete('/', function (req, res) {
 });

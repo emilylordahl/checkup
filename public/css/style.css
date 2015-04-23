@@ -1,5 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Merriweather:400,900,300,700);
 
+/* Body, Content, Structure */
+
 body, html {
 	font-family: 'Gotham Rounded', 'Merriweather', serif;
 	background-color: crimson;
@@ -145,4 +147,10 @@ button {
 button:hover {
 	background-color: snow;
 	cursor: pointer;
-};
+}
+
+.done {
+  border: 1px solid powderblue;
+  background-color: salmon;
+}
+
