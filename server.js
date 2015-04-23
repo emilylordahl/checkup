@@ -9,7 +9,7 @@ var express		 			  = require('express'),
 		session 					= require('express-session'),
 		app               = express();
 
-app.set('port', process.env.PORT || 9888);		
+app.set('port', process.env.PORT || 3000);		
 
 if (process.env.NODE_ENV !== 'test') {
   app.use( logger('dev') );
