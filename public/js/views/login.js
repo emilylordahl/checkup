@@ -33,7 +33,7 @@ App.Views.Login = Backbone.View.extend({
 			}
 		}).fail(function(jqXHR) {
 			if (jqXHR.status === 404) {
-				$('#session').html('404 Not Found');
+				$('#session').html('404: Cannot log in!');
 			}
 		});
 	},

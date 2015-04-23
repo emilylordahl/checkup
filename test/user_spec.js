@@ -70,7 +70,7 @@ describe('User', function() {
 					done();
 				});
 		});
-
+		
 		// it('should validate the presence of a pregnancy status', function(done) {
 		// 	nullUser
 		// 		.validate()
