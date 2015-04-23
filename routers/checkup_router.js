@@ -18,7 +18,8 @@ router.post('/', function (req, res) {
 			where: { 			
 				tip: req.body.tip,
 				description: req.body.description,
-				complete: false
+				complete: false,
+				user_id: req.session.currentUser 
 			}
 		})
 		.then(function(checkup) {
