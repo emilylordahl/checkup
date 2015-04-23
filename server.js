@@ -37,8 +37,8 @@ app.use('/sessions', sessionRouter);
 // Search API
 app.use('/search', searchRouter);
 
-app.listen(3000, function() {
-	console.log('Server listening on 3000...');
+app.listen(process.env.PORT || 3000, function() {
+  console.log('Server running on 3000...');
 });
 
 module.exports = app;
