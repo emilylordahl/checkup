@@ -6,7 +6,7 @@ App.Views.Tips = Backbone.View.extend({
 
 	initialize: function() {
 		console.log('Created: Tips Collection View');
-		this.listenTo(this.collection, 'reset', this.renderOne);
+		this.listenTo(this.collection, 'reset', this.render);
 		this.listenTo(this.collection, 'add', this.renderOne);
 		this.render();
 	},
@@ -19,7 +19,7 @@ App.Views.Tips = Backbone.View.extend({
 	renderOne: function(tip) {
 		console.log('Fetching and Rendering...');
 		var tipView = new App.Views.Tip({ model: tip });
-		this.$el.append(tipView.$el.html());
+		this.$el.append(tipView.$el);
 	},
 
 	setCollection: function(collection) {
