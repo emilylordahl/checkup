@@ -11,7 +11,7 @@ var db        = {};
 
 if (process.env.HEROKU_POSTGRESQL_ROSE_URL) {
     // the application is executed on Heroku ... use the postgres database
-    sequelize = new Sequelize(process.env.HEROKU_POSTGRESQL_[COLOR OF YOUR DATABASE]_URL, {
+    sequelize = new Sequelize(process.env.HEROKU_POSTGRESQL_ROSE_URL, {
       dialect:  'postgres',
       protocol: 'postgres',
       logging:  true //false
