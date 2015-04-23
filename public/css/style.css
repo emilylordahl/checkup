@@ -17,11 +17,16 @@ body, html {
 header {
   background-color: rgba(176, 224, 230, .85);
   position: fixed;
+  top: 0px;
   width: 100%;
   height: 75px;
-  margin-bottom: 20px;
   border-top: 3px solid slategray;
-  display: block;
+}
+
+.content {
+  margin-top: 115px;
+  /*position: absolute;*/
+  z-index: -1;
 }
 
 /* Typography */
@@ -54,7 +59,7 @@ section h3 {
   border-bottom: 1px solid powderblue;
 }
 
-section #tips h3 {
+section .tips h3 {
 	padding-left: 0px;
 	line-height: normal;
 	font-weight: 400;
@@ -65,7 +70,7 @@ p {
 	text-align: right;
 }
 
-section #tips p {
+section .tips p {
 	text-align: left;
 	line-height: normal;
 	font-family: 'Merriweather', serif;
@@ -85,7 +90,7 @@ section #tips p {
   /*background-color: rgba(250, 250, 250, 0.1)*/;
 }
 
-#tips {
+.tips {
 	width: 25%;
   height: auto;
   margin: 10px;
@@ -114,7 +119,7 @@ input {
 	font-size: 12.5px;
 }
 
-#checkbox {
+.checkbox {
   width: auto;
 }
 

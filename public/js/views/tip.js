@@ -10,18 +10,29 @@ App.Views.Tip = Backbone.View.extend({
 		this.render();
 	},
 
+	events: {
+		'click input.checkbox' : 'toggleDone'
+	},
+
 	render: function() {
 		this.$el.html(this.tipsTemplate(this.model.toJSON()));
 		this.saveModel();
+		console.log('CONSOLE LOG: ') + console.log(this.model.attributes.complete);
+		this.model.get('complete') ? this.$el.addClass('done') : this.$el.removeClass('done');
 	},
 
 	saveModel: function() {
-		console.log(this);
 		console.log('Saving Model...');
 
 		$.post('/checkups', {
 			tip: this.model.attributes.tip,
 			description: this.model.attributes.description
 		}).done(); 
+	},
+
+	toggleDone: function() {
+		console.log('You clicked the checkbox!');
+		this.model.toggle();
 	}
+
 });
