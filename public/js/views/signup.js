@@ -39,7 +39,12 @@ App.Views.Signup = Backbone.View.extend({
 			age: age,
 			gender: gender,
 			pregnant: pregnant
-		}).done(/*this.login*/);
+		}).done(function() {
+			alert('Success!');
+		});
+		// }).fail(function() {
+		// 	alert('Something went wrong. You are terrible.');
+		// });
 
 	}
 	// login: function() {

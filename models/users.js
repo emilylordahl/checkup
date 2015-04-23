@@ -58,10 +58,14 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: false,
       validate: {
         isFemale: function() {
-          if ( (this.gender === 'female') && (this.age >= 11) ) {
-            notEmpty: { msg: 'Are you pregnant? Please choose yes or no.' }
+          if (this.pregnant === true) {
+            if (this.gender === 'male') {
+              throw new Error('Men cannot be pregnant!');
+            } 
+            
           }
-        }
+        },
+        notEmpty: { msg: 'Are you pregnant? Please choose yes or no.' }
       }
     }
   }, {

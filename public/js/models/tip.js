@@ -5,13 +5,10 @@ App.Models.Tip = Backbone.Model.extend({
 		console.log('Created: Tip Model');
 	},
 
+	url: '/checkups',
+
 	toggle: function() {
-		// this.get('complete');
-		// if (this.complete === false) {
-		// 	this.save('complete', true)
-		// } else {
-		// 	this.save('complete', false)
-		// }
 		this.get('complete') ? this.save('complete', false) : this.save('complete', true);
 	}
+
 });

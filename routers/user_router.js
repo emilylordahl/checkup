@@ -67,6 +67,9 @@ router.post('/', function (req, res) {
 			})
 			.then(function(user) {
 				res.send(user);
+			}, function(err) {
+				res.status(422);
+				res.send(err);
 			});
 	});
 });
