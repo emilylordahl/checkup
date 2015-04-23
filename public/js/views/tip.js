@@ -4,21 +4,24 @@ App.Views.Tip = Backbone.View.extend({
 
 	url: '/checkups',
 
+	// className: 'checkbox',
+
+	// el: '#tips-container',
+
 	initialize: function() {
 		console.log('Created: Single Tip View');
 		this.tipsTemplate = Handlebars.compile($('#tips-template').html());
 		this.render();
+		console.log(this.$el);
 	},
 
 	events: {
-		'click input.checkbox' : 'toggleDone'
+		'click .checkbox' : 'toggleDone'
 	},
 
 	render: function() {
 		this.$el.html(this.tipsTemplate(this.model.toJSON()));
 		this.saveModel();
-		console.log('CONSOLE LOG: ') + console.log(this.model.attributes.complete);
-		this.model.get('complete') ? this.$el.addClass('done') : this.$el.removeClass('done');
 	},
 
 	saveModel: function() {
@@ -27,7 +30,18 @@ App.Views.Tip = Backbone.View.extend({
 		$.post('/checkups', {
 			tip: this.model.attributes.tip,
 			description: this.model.attributes.description
-		}).done(); 
+		}).done(this.changeClass.bind(this)); 
+	},
+
+	changeClass: function() {
+		console.log('Changing class');
+		var completeStatus = this.model.get('complete');
+		if (completeStatus === true) {
+			this.$el.addClass('done')
+		} else {
+			this.$el.removeClass('done')
+		}
+		console.log(this.$el);
 	},
 
 	toggleDone: function() {
