@@ -21,28 +21,22 @@ App.Views.Tip = Backbone.View.extend({
 		console.log('Saving Model...');
 
 		this.model.save().done(this.changeClass.bind(this));
-
-		// $.post('/checkups', {
-		// 	tip: this.model.attributes.tip,
-		// 	description: this.model.attributes.description
-		// }).done(this.changeClass.bind(this)); 
 	},
 
 	changeClass: function() {
 		console.log('Changing Class');
-
+		console.log(this.$el);
 		var completeStatus = this.model.get('complete');
+		console.log(completeStatus);
 		if (completeStatus === true) {
 			this.$el.addClass('done')
 		} else {
 			this.$el.removeClass('done')
 		}
-		console.log(this.model.toJSON());
 	},
 
 	toggleDone: function() {
 		console.log('You clicked the checkbox!');
 		this.model.toggle();
 	}
-
 });
