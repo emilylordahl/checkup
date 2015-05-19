@@ -20,7 +20,7 @@ App.Views.Signup = Backbone.View.extend({
 		var username  = $('[name="username"]').val();
 		var password  = $('[name="password"]').val();
 		var age       = $('[name="age"]').val();
-		var gender	  = $('[name="gender"]').val();
+		var gender    = $('[name="gender"]').val();
 		var pregnant  = $('[name="pregnant"]').val();
 
 		this.$('.signup-input').val('');
