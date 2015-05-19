@@ -12,10 +12,10 @@ router.use(session({
 	saveUninitialized: true
 }));
 
+// Create New Session (Login)
 router.post('/', function (req, res) {
 	var loginUsername = req.body.username;
 	var loginPassword = req.body.password;
-
 	User
 		.findOne({
 			where: { username: loginUsername }
@@ -23,7 +23,6 @@ router.post('/', function (req, res) {
 		.then(function(user) {
 			if (user) {
 				var passwordDigest = user.password_digest;
-
 				bcrypt.compare(loginPassword, passwordDigest, function(err, result) {
 					if (result) {
 						req.session.currentUser = user.id;
@@ -46,6 +45,7 @@ router.post('/', function (req, res) {
 		});
 });
 
+// Delete Session (Logout)
 router.delete('/', function (req, res) {
 	delete req.session.currentUser;
 	res.send('Successfully logged out.');	

@@ -6,7 +6,6 @@ var App = {
 }
 
 $(function () {
-	console.log('Loaded: js/app.js');
 
 	App.tipCollection = new App.Collections.Tips;
 	App.tipCollectionView = new App.Views.Tips({ collection: App.tipCollection });

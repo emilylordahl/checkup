@@ -11,6 +11,7 @@ router.use(session({
 	saveUninitialized: true
 }));
 
+// Check Current User
 router.get('/', function (req, res) {
 	console.log(req.session.currentUser);
 	if (req.session.currentUser) {

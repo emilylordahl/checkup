@@ -12,7 +12,7 @@ router.use(session({
 	saveUninitialized: true
 }));
 
-// Debug
+// Session Debugger
 router.get('/debug_session', function (req, res) {
 	res.send(req.session);
 });
@@ -29,7 +29,7 @@ var authenticate = function(req, res, next) {
 	req.session.currentUser ? next() : res.status(400).send({ err: 400, msg: 'Login denied.' });
 };
 
-// Show
+// Show User
 router.get('/:id', restrictAccess, authenticate, function (req, res) {
 	User
 		.findOne({
@@ -44,7 +44,7 @@ router.get('/:id', restrictAccess, authenticate, function (req, res) {
 		});
 });
 
-// Create
+// Create User
 router.post('/', function (req, res) {
 	var firstName = req.body.first_name;
 	var lastName  = req.body.last_name;
@@ -68,7 +68,7 @@ router.post('/', function (req, res) {
 			.then(function(user) {
 				res.send(user);
 			}, function(err) {
-				var errors = err.errors.map(function(error) { return error.path + ' - ' + error.message } )
+				var errors = err.errors.map(function(error) { return error.path + '—' + error.message })
 				res.status(422);
 				res.send({
 					status: 422,
@@ -78,7 +78,7 @@ router.post('/', function (req, res) {
 	});
 });
 
-// Update
+// Update User
 router.put('/:id', restrictAccess, authenticate, function (req, res) {
 	User
 		.findOne(req.params.id)
@@ -91,7 +91,7 @@ router.put('/:id', restrictAccess, authenticate, function (req, res) {
 		});
 });
 
-// Destroy
+// Destroy User
 router.delete('/:id', restrictAccess, authenticate, function (req, res) {
 	User
 		.findOne({

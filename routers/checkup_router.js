@@ -11,7 +11,7 @@ router.use(session({
 	saveUninitialized: true
 }));
 
-// Show
+// Show CheckUp
 router.get('/', function (req, res) {
 	Checkup
 		.findOne(req.params.id)
@@ -20,7 +20,7 @@ router.get('/', function (req, res) {
 		});
 });
 
-// Create
+// Create CheckUp
 router.post('/', function (req, res) {
 	Checkup
 		.findOrCreate({
@@ -36,7 +36,7 @@ router.post('/', function (req, res) {
 		});
 });
 
-// Update
+// Update CheckUp
 router.put('/', function (req, res) {
 	Checkup
 		.findOne(req.body.id)
@@ -49,7 +49,7 @@ router.put('/', function (req, res) {
 		});
 });
 
-// Delete
+// Delete CheckUp
 router.delete('/', function (req, res) {
 });
 

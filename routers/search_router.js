@@ -1,5 +1,5 @@
-var express		= require('express'),
-	  router		= express.Router(),
+var express   = require('express'),
+	  router    = express.Router(),
 	  logger    = require('morgan'),
 		session   = require('express-session'),
 	  request   = require('request'),
@@ -15,14 +15,13 @@ router.use(session({
 
 router.use(logger('dev'));
 
+// Ping HealthFinder.gov API
 router.get('/', function (req, res) {
-
 	request({
 		uri: '/current_user',
 		method: 'GET',
 		json: true
 	}, function (error, response, body) {
-		console.log(req.session.currentUser);
 		if (req.session.currentUser) {
 			User
 				.findOne(req.session.currentUser)

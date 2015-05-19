@@ -1,12 +1,12 @@
-var express		 			  = require('express'),
-		bodyParser 			  = require('body-parser'),
-		logger 		 			  = require('morgan'),
-		userRouter    	  = require('./routers/user_router.js'),
-		checkupRouter 	  = require('./routers/checkup_router.js'),
-		sessionRouter 	  = require('./routers/session_router.js'),
+var express           = require('express'),
+		bodyParser        = require('body-parser'),
+		logger            = require('morgan'),
+		userRouter        = require('./routers/user_router.js'),
+		checkupRouter     = require('./routers/checkup_router.js'),
+		sessionRouter     = require('./routers/session_router.js'),
 		currentUserRouter = require('./routers/current_user_router.js'),
-		searchRouter			= require('./routers/search_router.js'),
-		session 					= require('express-session'),
+		searchRouter      = require('./routers/search_router.js'),
+		session           = require('express-session'),
 		app               = express();
 
 if (process.env.NODE_ENV !== 'test') {
@@ -38,8 +38,7 @@ app.use('/sessions', sessionRouter);
 app.use('/search', searchRouter);
 
 app.listen(process.env.PORT || 3000, function() {
-  console.log('Server running on 3000...');
+  console.log('Server running on port 3000...');
 });
 
 module.exports = app;
-

@@ -27,7 +27,6 @@ header {
 
 .content {
   margin-top: 115px;
-  /*position: absolute;*/
   z-index: -1;
 }
 
@@ -89,7 +88,6 @@ section .tips p {
   border: 1px solid powderblue;
   opacity: 1;
   background-color: lightcoral;
-  /*background-color: rgba(250, 250, 250, 0.1)*/;
 }
 
 .tips {
@@ -98,12 +96,10 @@ section .tips p {
   margin: 10px;
   text-align: left;
   padding: 25px;
-  /* background-color: powderblue; */
   background-color: rgba(250, 250, 250, 0.1);
+  border: 1px solid rgba(250, 250, 250, 0.1);
   float: left;
   transition: all .5s ease;
-  border: 1px solid rgba(250, 250, 250, 0.1); 
-
 }
 
 .tips:hover {

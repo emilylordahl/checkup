@@ -1,12 +1,6 @@
-console.log('Loaded: views/signup.js');
-
 App.Views.Signup = Backbone.View.extend({
 
 	el: '#signup',
-
-	initialize: function() {
-		console.log('Created: Signup View');
-	},
 
 	events: {
 		'click #signup-button' : 'signup',
@@ -40,22 +34,10 @@ App.Views.Signup = Backbone.View.extend({
 			gender: gender,
 			pregnant: pregnant
 		}).done(function() {
-			alert('New user created!');
+			alert('New user created: ' + username);
+		}).fail(function() {
+			alert('Something went wrong. Please try again.');
 		});
-		// }).fail(function() {
-		// 	alert('Something went wrong. You are terrible.');
-		// });
-
 	}
-	// login: function() {
-
-	// 	$.post('/sessions', {
-	// 		username: username,
-	// 		password: password
-	// 	}).done(this.fetchAndRenderSession);
-
-	// 	// Need to write function to show and hide this properly so that the refresh doesn't show this.
-	// 	$('#signup').hide();
-	// }
 
 });

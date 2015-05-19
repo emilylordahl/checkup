@@ -1,11 +1,8 @@
-console.log('Loaded: views/login.js');
-
 App.Views.Login = Backbone.View.extend({
 
 	el: 'body',
 
 	initialize: function() {
-		console.log('Created: Login View');
 		loginTemplate = Handlebars.compile($('#login-template').html());
 		loggedInTemplate = Handlebars.compile($('#logged-in-template').html());
 		this.fetchAndRenderSession();
@@ -18,7 +15,6 @@ App.Views.Login = Backbone.View.extend({
 	},
 
 	fetchAndRenderSession: function() {
-		console.log('Rendering session...');
 		$.get('/current_user').done(function(user) {
 			if (user) {
 				$('#session').html(loggedInTemplate(user));
@@ -45,7 +41,6 @@ App.Views.Login = Backbone.View.extend({
 	},
 
 	login: function() {
-		console.log('You clicked the login button!');
 		var username  = $('[name="login-username"]').val();
 		var password  = $('[name="login-password"]').val();
 
@@ -54,18 +49,16 @@ App.Views.Login = Backbone.View.extend({
 			password: password
 		}).done(this.fetchAndRenderSession);
 
-		// Need to write function to show and hide this properly so that the refresh doesn't show this.
 		$('#signup').hide();
 	},
 
 	logout: function() {
-		console.log('You clicked the logout button!');
 		$.ajax({
 			url: '/sessions',
 			method: 'DELETE'
 		}).done(this.fetchAndRenderSession);
 
-		// Need to write function to show and hide this properly so that the refresh doesn't show this.
 		$('#signup').show();
 	}
+
 });

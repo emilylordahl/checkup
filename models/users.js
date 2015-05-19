@@ -1,57 +1,63 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var users = sequelize.define('users', {
+
     first_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isAlpha: { msg: 'Letters only please.' },
+        isAlpha : { msg: 'Letters only please.' },
         notEmpty: { msg: 'Please enter your first name.' }
       } 
     },
+
     last_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isAlpha: { msg: 'Letters only please.' },
+        isAlpha : { msg: 'Letters only please.' },
         notEmpty: { msg: 'Please enter your last name.' }    
       }
     },
+
     username: {
-     type: DataTypes.STRING,
-     allowNull: false,
-     validate: {
-      isAlpha: { msg: 'Usernames can only include letters.' },
-      notEmpty: { msg: 'Please enter a username.' }
-     } 
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isAlpha : { msg: 'Usernames can only include letters.' },
+        notEmpty: { msg: 'Please enter a username.' }
+      } 
     },
+
     password_digest: {
-     type: DataTypes.STRING,
-     allowNull: false,
-     validate: {
-      len: { args: [8,100], msg: 'Passwords must be 8 to 20 characters.'},
-      // isAlphanumeric: { msg: 'Passwords must contain at least one letter and number.' },
-      notEmpty: {  msg: 'Please create a password.' }
-     } 
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len     : { args: [8,100], msg: 'Passwords must be 8 to 20 characters.'},
+        notEmpty: {  msg: 'Please create a password.' }
+      } 
     },
+
     age: {
-     type: DataTypes.INTEGER,
-     allowNull: false,
-     validate: {
-      isInt: { msg: 'Please enter a number.'},
-      max: { args: [120], msg: 'Your age cannot exceed 120.' },
-      min: { args: [0], msg: 'Your age must be greater than 0.'},
-      notEmpty: { msg: 'Please enter your age.' }
-     } 
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        isInt   : { msg: 'Please enter a number.'},
+        max     : { args: [120], msg: 'Your age cannot exceed 120.' },
+        min     : { args: [0], msg: 'Your age must be greater than 0.'},
+        notEmpty: { msg: 'Please enter your age.' }
+      } 
     },
+
     gender: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isIn: { args: [['male', 'female']], msg: 'Please enter male or female.' },
+        isIn    : { args: [['male', 'female']], msg: 'Please enter male or female.' },
         notEmpty: { msg: 'Please select your gender.' }
       }  
     },
+
     pregnant: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -60,9 +66,8 @@ module.exports = function(sequelize, DataTypes) {
         isFemale: function() {
           if (this.pregnant === true) {
             if (this.gender === 'male') {
-              throw new Error('Men cannot be pregnant!');
-            } 
-            
+              throw new Error('Invalid input for males.');
+            }
           }
         },
         notEmpty: { msg: 'Are you pregnant? Please choose yes or no.' }
@@ -71,6 +76,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
 
     underscored: true,
+
     classMethods: {
       associate: function(models) {
         users.hasMany(models.checkups, { 
@@ -81,5 +87,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+
   return users;
+
 };
