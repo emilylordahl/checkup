@@ -1,7 +1,7 @@
 # CheckUp
 WDI Project 2 (solo)
 
-https://checkup-app.herokuapp.com/
+http://checkup-app.herokuapp.com/
 
 ## About
 CheckUp is a single-page web application, built with Backbone.js, that allows a user to securely sign up for an account and login to receive health tips based on his or her age and gender. A user can mark certain health tips as complete to track yearly checkups and maintain a healthy lifestyle. Data was parsed and rendered via the HealthFinder.gov API. Users and their health progress were collected in a PostgreSQL database using Sequelize on a Node.js server.
