@@ -3,7 +3,7 @@
 /* Body, Content, Structure */
 
 body, html {
-	font-family: 'Gotham Rounded', 'Merriweather', serif;
+	font-family: font-family: 'Gotham Rounded A', 'Gotham Rounded B', 'Merriweather', serif;
 	background-color: crimson;
 	color: snow;
 	letter-spacing: 1px;
@@ -118,7 +118,7 @@ input {
 	padding: 5px;
 	width: 50%;
 	display: inline-block;
-	font-family: 'Gotham Rounded', 'Merriweather', serif;
+	font-family: font-family: 'Gotham Rounded A', 'Gotham Rounded B', 'Merriweather', serif;
 	color: crimson;
 	font-size: 12.5px;
 }
@@ -137,7 +137,7 @@ select {
 	margin: 15px;
   border: none;
   background-color: snow;
-  font-family: 'Gotham Rounded', 'Merriweather', serif;
+  font-family: font-family: 'Gotham Rounded A', 'Gotham Rounded B', 'Merriweather', serif;
   height: 25px;
 }
 
@@ -145,7 +145,7 @@ button {
 	padding: 10px;
   background-color: powderblue;
   border: none;
-  font-family: 'Gotham Rounded', 'Merriweather', serif;
+  font-family: font-family: 'Gotham Rounded A', 'Gotham Rounded B', 'Merriweather', serif;
   font-size: 15px;
   color: crimson;
   border-bottom: 3px solid slategray;
